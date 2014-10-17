@@ -114,7 +114,7 @@
         if (item.op === 'u') {
           op.query = item.o2;
           op.update = item.o;
-        } else if ((_ref1 = item.op) === 'i' || _ref1 === 'd' || _ref1 === 'c' || _ref1 === 'db') {
+        } else if ((_ref1 = item.op) === 'i' || _ref1 === 'd' || _ref1 === 'c' || _ref1 === 'db' || _ref1 === 'n') {
           op.document = item.o;
         }
         try {
@@ -138,6 +138,9 @@
       return q.ninvoke(this.collection.find().sort({
         $natural: 1
       }).limit(1), 'nextObject').then(function(doc) {
+        if (doc == null) {
+          throw new Error('Either your MongoDB setup does not have the oplog enabled, or there are no logs in the oplog yet. Once there is at least 1 log, start your mongo-tails instance again.');
+        }
         return doc.ts;
       });
     };

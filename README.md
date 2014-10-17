@@ -16,12 +16,39 @@ tails.filters.push(function(item) {
   return item.collection === 'users';
 });
 
-tails.on('item', function(item) {
+tails.on('operation', function(item) {
   console.log(item.id, item.opName);
 });
 
 tails.start();
 ```
+
+### Operation Schema
+
+```json
+{
+  "ts": Date,
+  "id": 123456,
+  "database": "db-name",
+  "collection": "my-collection",
+  "type": "i",
+  "name": "INSERT",
+  
+  "document": {},  // for INSERT, DELETE, COMMAND, DATABASE, NOOP
+  
+  "query": {},     // for UPDATE
+  "update": {}     // for UPDATE
+}
+```
+
+### Operation Types/Names
+
+- i: INSERT
+- u: UPDATE
+- d: DELETE
+- c: COMMAND
+- db: DATABASE
+- n: NOOP
 
 ## License
 Copyright (c) 2014 Matt Insler  

@@ -66,7 +66,7 @@ class Tails extends EventEmitter
       if item.op is 'u'
         op.query = item.o2
         op.update = item.o
-      else if item.op in ['i', 'd', 'c', 'db']
+      else if item.op in ['i', 'd', 'c', 'db', 'n']
         op.document = item.o
       
       try
@@ -85,6 +85,8 @@ class Tails extends EventEmitter
     # get first ts
     q.ninvoke(@collection.find().sort($natural: 1).limit(1), 'nextObject')
     .then (doc) ->
+      throw new Error('Either your MongoDB setup does not have the oplog enabled, or there are no logs in the oplog yet. Once there is at least 1 log, start your mongo-tails instance again.') unless doc?
+      
       doc.ts
 
 exports.Tails = Tails
