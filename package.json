@@ -1,0 +1,39 @@
+{
+  "name": "mongo-tails",
+  "description": "Utility to help tailing and filtering the MongoDB Oplog",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mattinsler/mongo-tails",
+  "author": {
+    "name": "Matt Insler",
+    "email": "matt.insler@gmail.com",
+    "url": "http://www.mattinsler.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattinsler/mongo-tails.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mattinsler/mongo-tails/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mattinsler/mongo-tails/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "dist/mongo-tails",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "moddl": "^0.2.0",
+    "moddl-mongodb": "^0.2.2",
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-clean": "~0.5.0"
+  },
+  "keywords": []
+}
